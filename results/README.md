@@ -9,7 +9,7 @@ Scilab:
 
 ```scilab
 m = mopen('foo.dat', 'rb');
-result = mget(120000, m);
+result = mget(120000, 'i', m);
 mclose(m);
 ```
 

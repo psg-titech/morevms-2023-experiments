@@ -1,0 +1,19 @@
+module MultiNode
+in
+  gpio16 : Bool
+out
+  gpio17
+use
+  Std
+
+node (node0, a0, b0) = (gpio16, 1, 2)
+node (node1, a1, b1) = (node0, 1, 2)
+node (node2, a2, b2) = (node1, 1, 2)
+node (node3, a3, b3) = (node2, 1, 2)
+node (node4, a4, b4) = (node3, 1, 2)
+node (node5, a5, b5) = (node4, 1, 2)
+node (node6, a6, b6) = (node5, 1, 2)
+node (node7, a7, b7) = (node6, 1, 2)
+node (node8, a8, b8) = (node7, 1, 2)
+node (node9, a9, b9) = (node8, 1, 2)
+node gpio17 = node9

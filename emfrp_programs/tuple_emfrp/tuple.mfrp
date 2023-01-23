@@ -1,0 +1,10 @@
+module TupleNode
+in
+  gpio16 : Bool
+out
+  gpio17
+use
+  Std
+
+node (v, a, b) = (gpio16, 1, 2)
+node gpio17 = if v then True else False

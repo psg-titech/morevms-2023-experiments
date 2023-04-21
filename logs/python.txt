@@ -1,0 +1,61 @@
+MicroPython:
+import machine
+gpio16 = machine.Pin(16, machine.Pin.IN)
+gpio17 = machine.Pin(17, machine.Pin.OUT)
+
+gpio16.irq(irq_handler)
+
+毎回リセットした．
+
+dotnet run -- write 120000 MicroPython-direct.dat
+[LOG]
+Reading Start
+Start time: 1/20/2023 9:01:24 AM
+End time: 1/20/2023 9:11:30 AM
+
+> MicroPython
+def irq_handler(p):
+  gpio17.value(gpio16.value())
+
+dotnet run -- write 120000 MicroPython-tuple.dat
+[LOG]
+Reading Start
+Start time: 1/20/2023 2:53:27 PM
+End time: 1/20/2023 3:03:32 PM
+> MicroPython
+def irq_handler(p):
+  (v, a, b) = (gpio16.value(), 1, 2)
+  gpio17.value(v)
+
+==
+#上のやつ
+import gc
+gc.mem_free()
+>> 108720
+
+#ここから分岐
+> noassign - 10
+for i in range(10):
+  gpio17.value(gpio16.value())
+gc.mem_free()
+>> 108272
+
+> noassign - 100
+for i in range(100):
+  gpio17.value(gpio16.value())
+gc.mem_free()
+>> 108112
+
+> tuple - 10
+for i in range(10):
+  (v, a, b) = (gpio16.value(), 1, 2)
+  gpio17.value(v)
+gc.mem_free()
+>> 107808
+
+> assign - 100
+for i in range(100):
+  (v, a, b) = (gpio16.value(), 1, 2)
+  gpio17.value(v)
+gc.mem_free()
+>> 104928

@@ -61,8 +61,8 @@ Initial   : Heap free size: 135720, Managed available: 8190
 ## Measuring latency
 ### Direct
 ```
-$ dotnet run -- write 120000 emfrp-repl-onenode.dat
-Reading Start
+$ dotnet run -- write 120000 emfrp-repl-direct.dat
+Reading Startnn
 Start time: 1/20/2023 4:12:25 PM
 End time: 1/20/2023 4:22:32 PM
 ```
@@ -77,8 +77,9 @@ End time: 1/20/2023 4:42:52 PM
 
 ### 10 Nodes
 ```
-$ dotnet run -- write 120000 emfrp-repl-multinode.dat
+$ dotnet run -- write 120000 emfrp-repl-10nodes.dat
 Reading Start
 Start time: 1/20/2023 4:53:04 PM
 End time: 1/20/2023 5:03:10 PM
 ```
+

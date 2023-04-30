@@ -32,3 +32,5 @@ synthesis/
 !*.sdc
 # tcl files:
 !*.tcl
+# QSys
+!*.qsys
